@@ -18,7 +18,7 @@ router.post('/login', (req, res) => {
         username: user.username
     }, 'secret_key', { expiresIn: '1h' });
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, user });
 });
 
 router.get('/profile', middlewareValidate, (req, res) => {

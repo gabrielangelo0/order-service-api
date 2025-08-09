@@ -3,7 +3,7 @@ const { createOrderService, getAllOrdersService } = require('../controllers/orde
 
 const router = express.Router();
 
-router.get('/orders', getAllOrdersService);
-router.post('/orders', createOrderService);
+router.get('/service-orders', getAllOrdersService);
+router.post('/service-orders', createOrderService);
 
 module.exports = router;
