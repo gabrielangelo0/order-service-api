@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
     res.status(200).json({ token, user });
 });
 
-router.get('/profile', middlewareValidate, (req, res) => {
+router.get('/auth/me', middlewareValidate, (req, res) => {
     // Handle fetching user profile logic here
     res.send('User profile endpoint');
 });
