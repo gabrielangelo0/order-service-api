@@ -6,8 +6,8 @@ const middlewareValidate = require('../middlewares/validate');
 const router = express.Router();
 
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const user = users.find((usuario) => usuario.username === username && usuario.password === password);
+    const { email, password } = req.body;
+    const user = users.find((usuario) => usuario.email === email && usuario.password === password);
 
     if (!user) {
         return res.status(401).send('Credenciais inválidas');
@@ -15,13 +15,13 @@ router.post('/login', (req, res) => {
 
     const token = jwt.sign({
         id: user.id,
-        username: user.username
+        email: user.email
     }, 'secret_key', { expiresIn: '1h' });
 
     res.status(200).json({ token, user });
 });
 
-router.get('/profile', middlewareValidate, (req, res) => {
+router.get('/auth/me', middlewareValidate, (req, res) => {
     // Handle fetching user profile logic here
     res.send('User profile endpoint');
 });
