@@ -15,11 +15,11 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  email    String  @unique
-  name     String?
-  password String
-  role     String
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  email     String  @unique
+  full_name String
+  password  String
+  role      String? @default("user")
 }
 
 model OrderService {
