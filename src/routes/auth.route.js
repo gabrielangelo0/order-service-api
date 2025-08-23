@@ -48,10 +48,20 @@ router.post("/auth/register", async (req, res) => {
       },
     });
 
-    res.status(201).json({ user });
+    const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+    },
+    "secret_key",
+    { expiresIn: "1h" }
+  );
+
+    res.status(201).json({ token, user });
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: error });
+    throw new Error(error);
   }
 });
 
